@@ -1,22 +1,25 @@
-import '../css/Navbar.css'
 import React from 'react'
 import {
   NavLink,
 } from 'react-router-dom'
+import { Navbar, Nav, NavItem } from 'react-bootstrap'
+//import '../css/Navbar.css'
 
-const Navbar = (props) => {
+const Nbar = (props) => {
   return (
-    <>
-      <nav className='navbar'>
-        <div className='navbar-container'>
-          <ul id='nav'>
-            <li><NavLink to='/'>Home</NavLink></li>
-            <li><NavLink to='/projects'>Projects</NavLink></li>
-            <li><NavLink to='/contests'>Contests</NavLink></li>
-          </ul>
-        </div>
-      </nav>
-    </>
+    <Navbar className='navbar' bg='dark' variant='dark'>
+      <Nav className='mr-auto'>
+        <NavItem>
+          <Nav.Link as={NavLink} to='/'>Home</Nav.Link>
+        </NavItem>
+        <NavItem>
+          <Nav.Link as={NavLink} to='/projects'>Projects</Nav.Link>
+        </NavItem>
+        <NavItem>
+          <Nav.Link as={NavLink} to='/contests'>Contests</Nav.Link>
+        </NavItem>
+      </Nav>
+    </Navbar>
   )
 }
-export default Navbar;
+export default Nbar;

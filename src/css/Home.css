@@ -29,7 +29,9 @@ video {
 }
 
 .home-banner h1{
-    font-size: 100px;
+    height: 100%;
+    width: 100%;
+    font-size: 6rem;
     color: lavenderblush;
 }
 
