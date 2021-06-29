@@ -1,0 +1,65 @@
+video {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    z-index: -1;
+}
+
+.home-container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    object-fit: contain;
+}
+
+.home-banner {
+    height: 75%;
+    width: 100%;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+    object-fit: contain;
+    position:relative;
+}
+
+.home-banner h1{
+    height: 100%;
+    width: 100%;
+    font-size: 6rem;
+    color: lavenderblush;
+}
+
+.home-banner-text{
+    height: 100%;
+    width: 75%;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+    object-fit: contain;
+    position:relative;
+}
+
+.home-info {
+    height:100%;
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-info h2{
+    height: 100%;
+    width: 50%;
+    font-size:20px;
+    color:black;
+    text-align: left;
+    justify-content:left;
+}
