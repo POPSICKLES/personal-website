@@ -1,0 +1,41 @@
+.contests-container {
+    width: 75%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
+    margin: auto;
+}
+.contest-cards {
+    height: 100%;
+    width: 80%;
+    height: auto;
+    margin: auto;
+
+}
+.flex {
+    display: flex;
+}
+.justify-left{
+    justify-content: left;
+    margin-right: 0px;
+}
+.float-left{
+    float: left;
+}
+.float-right{
+    float:right;
+}
+.contest-name{
+    text-align: justify;
+    text-justify: inter-word;
+    float: left;
+}
+.contest-placement {
+    margin-right: 10px;
+    float: right;
+}
+.line-chart {
+    width: 100%;
+}

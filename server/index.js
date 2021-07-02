@@ -1,10 +1,22 @@
 const express = require('express');
 const axios = require('axios');
+const cors = require('cors');
 require('dotenv').config();
 
 const hostname = '127.0.0.1'
 const PORT = process.env.PORT || 8080;
 const app = express();
+app.use(cors());
+
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(err.status).send({
+    error:{
+      status:err.status,
+      message: err.message
+    },
+  });
+});
 
 app.get('/cf', (req, res, next) => {
   const path1 = 'https://codeforces.com/api/user.info?handles=popsickles';
@@ -17,7 +29,7 @@ app.get('/cf', (req, res, next) => {
     .all([r1, r2, r3])
     .then(
       axios.spread((res1, res2, res3) => {
-        res.json({'info':res1.data, 'rating':res2.data, 'status':res3.data});
+        res.json({'info':res1.data.result[0], 'rating':res2.data.result, 'status':res3.data.result});
       })
     )
     .catch(err => {
@@ -27,6 +39,7 @@ app.get('/cf', (req, res, next) => {
 
 //app.get('/leetcode', (req, res, next) => {
 //  //const path = 'https://leetcode.com/api/problems/algorithms';
+//  const path = 'https://leetcode.com/popsickles';
 //  const options = {
 //    method: 'GET',
 //    url: path,
@@ -65,16 +78,6 @@ app.get('/git-repos', (req, res, next) => {
     console.log(err);
     next(err);
   })
-});
-
-app.use((err, req, res, next) => {
-  console.error(err);
-  res.status(err.status).send({
-    error:{
-      status:err.status,
-      message: err.message
-    },
-  });
 });
 
 app.listen(PORT, hostname, () => {

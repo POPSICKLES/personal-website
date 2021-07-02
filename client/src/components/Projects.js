@@ -11,29 +11,26 @@ class Projects extends React.Component {
     }
   }
   componentDidMount() {
-    const path = 'https://api.github.com/user/repos';
+    const path = 'http://localhost:8080/git-repos';
     const options = {
       method: 'GET',
       url: path,
       headers: {
-        Authorization: `token ${process.env.REACT_APP_API_KEY}`,
         'Content-Type': 'application/json',
       },
     }
     axios(options).then(res => {
-      console.log(res.data);
-      let sortedData = res.data.sort((a, b) => {
+      res.data.sort((a, b) => {
         return a.updated_at < b.updated_at;
       })
       this.setState({ cardList: res.data.map(this.createCard) });
+    }).catch(err => {
+      console.log(err);
     })
-      .catch(err => {
-        console.log(err);
-      })
   }
-  createCard(proj) {
+  createCard(proj, i) {
     const card =
-      <div className='item'>
+      <div className='item' key={i}>
         <Card style={{ width: '20rem', margin: '2rem 2rem 2rem 2rem' }} className='item'>
           <Card.Body>
             <Card.Title>{proj.name}</Card.Title>
@@ -48,6 +45,11 @@ class Projects extends React.Component {
   render() {
     return (
       <div className='projects-container'>
+        <div className='projects-header'>
+          <h2>
+            Projects
+          </h2>
+        </div>
         <div className='projects-list'>
           {this.state.cardList}
         </div>

@@ -1,9 +1,15 @@
+.projects-header{
+    width: 75%;
+    padding: 10px 10px 10px 10px;
+    margin:auto;
+}
 .projects-list {
-    width: 100%;
+    width: 75%;
     height: 100%;
     display:flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: left;
     align-items: baseline;
+    margin: auto;
 }
