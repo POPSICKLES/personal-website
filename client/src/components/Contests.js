@@ -30,7 +30,7 @@ class Contests extends React.Component {
         userRating: res.data.rating,
         userActivity: res.data.status
       });
-    });
+    }).catch(err => console.log(err));
   }
   render() {
     let na = 'N/A';
@@ -71,14 +71,10 @@ class Contests extends React.Component {
             <Card.Text className='flex justify-left'>{rank}</Card.Text>
             <Card.Title as='h4' className='flex justify-left'>Contest Rating</Card.Title>
             <ResponsiveContainer width='100%' aspect={1.5}>
-              <LineChart
-                width={100}
-                height={100}
-                data={data}
-              >
+              <LineChart width={100} height={100} data={data} >
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" padding={{ left: 30, right: 30 }} interval={3}/>
-                <YAxis domain={[0, Math.max(2600, mrating+100)]} tickCount={14}/>
+                <XAxis dataKey="name" padding={{ left: 30, right: 30 }} interval={3} />
+                <YAxis domain={[0, Math.max(2600, mrating + 100)]} tickCount={14} />
                 <ReferenceLine y={2400} label="Grandmaster" stroke="red" />
                 <ReferenceLine y={2200} label="International Master" stroke="orange" />
                 <ReferenceLine y={2000} label="Master" stroke="orange" />
@@ -94,6 +90,17 @@ class Contests extends React.Component {
             <Card.Title as='h4' className='flex justify-left'>Activity</Card.Title>
             <ListGroup >{activity_list}</ListGroup>
             <Card.Link className='flex justify-left' href='https://codeforces.com/profile/popsickles'>CodeForces</Card.Link>
+          </Card.Body>
+        </Card>
+        <Card className='contest-cards'>
+          <Card.Header as='h4' className='flex justify-left'>LeetCode</Card.Header>
+          <Card.Body>
+            <Card.Title as='h4' className='flex justify-left'>Profile</Card.Title>
+            <Card.Title as='h5' className='flex justify-left float-left'>Current Rating:</Card.Title>
+            <Card.Text className='flex justify-left'>1,570pt</Card.Text>
+            <Card.Title as='h5' className='flex justify-left float-left'>Current Rank:</Card.Title>
+            <Card.Text className='flex justify-left'>45,555</Card.Text>
+            <Card.Link className='flex justify-left' href='https://leetcode.com/popsickles/'>Leetcode</Card.Link>
           </Card.Body>
         </Card>
       </div>
