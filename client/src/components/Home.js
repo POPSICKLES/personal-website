@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'react-bootstrap/Image'
 import '../css/Home.css'
 
 class Home extends React.Component {
@@ -6,20 +7,17 @@ class Home extends React.Component {
     return (
       <div className='home-container'>
         <div className='home-banner'>
-          <video src='/videos/1621366718.mp4' autoPlay loop muted />
+          <Image 
+          src='https://media-exp1.licdn.com/dms/image/C4D03AQH6vamIy_CfoQ/profile-displayphoto-shrink_200_200/0/1583332097061?e=1631145600&v=beta&t=Ebdthp2fWFp68Fm3Gx08gkS7lhMPLIdpQ1aStg77YI4' 
+          roundedCircle className='me'/>
           <div className='home-banner-text'>
             <h1>
-              Hi, I'm<br />
+              Hey, I'm<br />
               Steven Fong<br />
-              ___________<br />
-              Welcome to my Website
             </h1>
           </div>
         </div>
         <div className='home-info'>
-          <h2>
-            What you'll find
-          </h2>
         </div>
       </div>
     );

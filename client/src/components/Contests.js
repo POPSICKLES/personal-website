@@ -17,6 +17,7 @@ class Contests extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      gotInfo: false,
       userInfo: null,
       userRating: null,
       userActivity: null,
@@ -26,11 +27,14 @@ class Contests extends React.Component {
     const p = 'http://localhost:8080/cf';
     axios.get(p).then((res) => {
       this.setState({
+        gotInfo: true,
         userInfo: res.data.info,
         userRating: res.data.rating,
         userActivity: res.data.status
       });
-    }).catch(err => console.log(err));
+    }).catch(err => {
+      console.log(err)
+    });
   }
   render() {
     let na = 'N/A';
@@ -62,7 +66,9 @@ class Contests extends React.Component {
     return (
       <div className='contests-container'>
         <Card className='contest-cards'>
-          <Card.Header as='h4' className='flex justify-left'>CodeForces</Card.Header>
+          <Card.Header as='h4' className='flex justify-left'>
+            CodeForces {this.state.gotInfo ? '': '(Failed to retrieve, click link)'}
+          </Card.Header>
           <Card.Body>
             <Card.Title as='h4' className='flex justify-left'>Profile</Card.Title>
             <Card.Title as='h5' className='flex justify-left float-left'>Current Rating:</Card.Title>
@@ -70,7 +76,7 @@ class Contests extends React.Component {
             <Card.Title as='h5' className='flex justify-left float-left'>Current Rank:</Card.Title>
             <Card.Text className='flex justify-left'>{rank}</Card.Text>
             <Card.Title as='h4' className='flex justify-left'>Contest Rating</Card.Title>
-            <ResponsiveContainer width='100%' aspect={1.5}>
+            <ResponsiveContainer width='100%' aspect={2}>
               <LineChart width={100} height={100} data={data} >
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name" padding={{ left: 30, right: 30 }} interval={3} />
@@ -89,7 +95,9 @@ class Contests extends React.Component {
             </ResponsiveContainer>
             <Card.Title as='h4' className='flex justify-left'>Activity</Card.Title>
             <ListGroup >{activity_list}</ListGroup>
-            <Card.Link className='flex justify-left' href='https://codeforces.com/profile/popsickles'>CodeForces</Card.Link>
+            <Card.Link className='flex justify-left' href='https://codeforces.com/profile/popsickles'>
+              CodeForces Profile
+            </Card.Link>
           </Card.Body>
         </Card>
         <Card className='contest-cards'>
@@ -100,7 +108,9 @@ class Contests extends React.Component {
             <Card.Text className='flex justify-left'>1,570pt</Card.Text>
             <Card.Title as='h5' className='flex justify-left float-left'>Current Rank:</Card.Title>
             <Card.Text className='flex justify-left'>45,555</Card.Text>
-            <Card.Link className='flex justify-left' href='https://leetcode.com/popsickles/'>Leetcode</Card.Link>
+            <Card.Link className='flex justify-left' href='https://leetcode.com/popsickles/'>
+              Leetcode Profile
+            </Card.Link>
           </Card.Body>
         </Card>
       </div>

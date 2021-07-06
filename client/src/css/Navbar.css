@@ -1,6 +1,33 @@
 .navbar {
-    background-color: black;
+    position: fixed;
+    height: auto;
+    width: 100%;
+    background-color: #282828;
 }
-.mr-auto{
-    color:white;
+
+.nav-link {
+    display: block;
+    padding: 1rem;
+    color: #928374;
+    background-color: #282828;
+}
+
+
+.nav-link:hover{
+    color: #d79921;
+    background-color: #1d2021;
+}
+
+.active{
+    color: #d79921;
+}
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.navbar ul li {
+    display: inline-block;
 }

@@ -2,24 +2,17 @@ import React from 'react'
 import {
   NavLink,
 } from 'react-router-dom'
-import { Navbar, Nav, NavItem } from 'react-bootstrap'
-//import '../css/Navbar.css'
+import '../css/Navbar.css'
 
-const Nbar = (props) => {
+const Navbar = (props) => {
   return (
-    <Navbar className='navbar' bg='dark' variant='dark'>
-      <Nav className='mr-auto'>
-        <NavItem>
-          <Nav.Link as={NavLink} to='/'>Home</Nav.Link>
-        </NavItem>
-        <NavItem>
-          <Nav.Link as={NavLink} to='/projects'>Projects</Nav.Link>
-        </NavItem>
-        <NavItem>
-          <Nav.Link as={NavLink} to='/contests'>Contests</Nav.Link>
-        </NavItem>
-      </Nav>
-    </Navbar>
+    <div className='navbar'>
+      <ul>
+        <li><NavLink className='nav-link' exact to='/' activeClassName='active'>Home</NavLink></li>
+        <li><NavLink className='nav-link' exact to='/projects' activeClassName='active'>Projects</NavLink></li>
+        <li><NavLink className='nav-link' exact to='/contests' activeClassName='active'>Contests</NavLink></li>
+      </ul>
+    </div>
   )
 }
-export default Nbar;
+export default Navbar;

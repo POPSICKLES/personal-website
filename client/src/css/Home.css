@@ -8,13 +8,25 @@ video {
     z-index: -1;
 }
 
+hr {
+    width: 70%;
+    height: 6px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10rem;
+    margin-bottom: 10rem;
+    border: 0;
+    background: lavenderblush
+}
+
 .home-container {
-    height: 100vh;
+    height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     object-fit: contain;
+    background: #282828;
 }
 
 .home-banner {
@@ -29,10 +41,13 @@ video {
 }
 
 .home-banner h1{
+    display: flex;
+    flex-direction:column;
+    flex-wrap: nowrap;
     height: 100%;
     width: 100%;
-    font-size: 6rem;
-    color: lavenderblush;
+    font-size: 6em;
+    color: gray;
 }
 
 .home-banner-text{
@@ -58,8 +73,18 @@ video {
 .home-info h2{
     height: 100%;
     width: 50%;
-    font-size:20px;
+    font-size:2rem;
     color:black;
     text-align: left;
     justify-content:left;
+}
+
+img {
+    max-width: 50%;
+    height: auto;
+}
+.me {
+    margin-top: 4em;
+    max-width: 15%;
+    height: auto;
 }

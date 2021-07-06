@@ -2,7 +2,7 @@ import {
   Switch,
   Route,
 } from 'react-router-dom'
-import Nbar from './components/Navbar.js'
+import Navbar from './components/Navbar.js'
 import Home from './components/Home.js'
 import Projects from './components/Projects.js'
 import Contests from './components/Contests.js'
@@ -13,7 +13,7 @@ import 'dotenv'
 const App = () => {
   return (
     <div className="App">
-      <Nbar/>
+      <Navbar/>
       <Switch>
         <Route exact path="/">
           <Home />
