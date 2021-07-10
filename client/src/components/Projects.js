@@ -36,7 +36,7 @@ class Projects extends React.Component {
             <Card.Title>{proj.name}</Card.Title>
             <Card.Subtitle className="mb-2 text-muted">Updated: {proj.updated_at.substring(0, 10)}</Card.Subtitle>
             <Card.Text>{proj.description}</Card.Text>
-            <Card.Link href={proj.git_url}>Github Url</Card.Link>
+            <Card.Link href={proj.html_url}>Github Url</Card.Link>
           </Card.Body>
         </Card>
       </div>

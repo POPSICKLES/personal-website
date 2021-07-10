@@ -6,6 +6,7 @@ import Navbar from './components/Navbar.js'
 import Home from './components/Home.js'
 import Projects from './components/Projects.js'
 import Contests from './components/Contests.js'
+import Footer from './components/Footer.js'
 import './css/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'dotenv'
@@ -25,6 +26,7 @@ const App = () => {
           <Contests />
         </Route>
       </Switch>
+      <Footer/>
     </div>
   );
 }
