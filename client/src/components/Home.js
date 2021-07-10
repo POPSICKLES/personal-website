@@ -21,8 +21,10 @@ class Home extends React.Component {
             </p>
           </div>
         </div>
-        <div>
-          Welcome to my website!
+        <div className='grey intro'>
+          Welcome to my website! Here, you'll find of my projects 
+          as well as the varios websites I use to compete/practice in small 
+          programming competitions. I hope you enjoy yours stay.
         </div>
         <div className='about'>
           <p>

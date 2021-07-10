@@ -7,6 +7,7 @@ const Footer = (props) => {
   return (
     <div className='footer'>
       <div className='contact'>
+        <hr/>
         <span id='contact-heading'><h5>Contact</h5></span>
         <div className='wrapper'>
             <button className='icon clickable'>

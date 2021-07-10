@@ -8,10 +8,18 @@
     margin-bottom: 0rem;
     padding-top: 0rem;
 }
+
 .contact {
     width: 100%;
     height: auto;
     margin-top: 2rem;
+}
+
+.contact hr {
+    width: 50%;
+    height: 0.25rem;
+    border: 0;
+    background: #3c3836;
 }
 
 #contact-heading  {
