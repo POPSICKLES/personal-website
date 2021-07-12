@@ -1,11 +1,18 @@
+const fs = require('fs');
 const express = require('express');
 const axios = require('axios');
+const https = require('https');
 const cors = require('cors');
+const { createPrivateKey } = require('crypto');
 require('dotenv').config();
 
 const hostname = '127.0.0.1'
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8443;
 const app = express();
+const privateKey = fs.readFileSync('../../../cert/localhost-cert/localhost.key');
+const certificate = fs.readFileSync('../../../cert/localhost-cert/localhost.crt');
+const credentials = {key: privateKey, cert: certificate};
+const httpsServer = https.createServer(credentials, app);
 app.use(cors());
 
 app.use((err, req, res, next) => {
@@ -37,30 +44,6 @@ app.get('/cf', (req, res, next) => {
     })
 });
 
-//app.get('/leetcode', (req, res, next) => {
-//  //const path = 'https://leetcode.com/api/problems/algorithms';
-//  const path = 'https://leetcode.com/popsickles';
-//  const options = {
-//    method: 'GET',
-//    url: path,
-//    headers: {
-//      'Content-Type': 'application/json',
-//    },
-//    auth: {
-//      username:  `${process.env.LEETCODE_USER}`,
-//      password: `${process.env.LEETCODE_PASS}`
-//    }
-//  }
-//  axios(options).then(r => {
-//    console.log(r.data.user_name);
-//    res.json(r.data);
-//  })
-//  .catch(err => {
-//    console.log(err);
-//    next(err);
-//  })
-//});
-
 app.get('/git-repos', (req, res, next) => {
   const path = 'https://api.github.com/user/repos';
   const options = {
@@ -80,6 +63,9 @@ app.get('/git-repos', (req, res, next) => {
   })
 });
 
-app.listen(PORT, hostname, () => {
-  console.log(`Server listening on ${PORT}`);
+//app.listen(PORT, hostname, () => {
+//  console.log(`Server listening on ${PORT}`);
+//});
+httpsServer.listen(PORT, hostname, ()=>{
+  console.log(`Server listenin on ${PORT}`)
 });

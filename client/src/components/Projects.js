@@ -43,6 +43,7 @@ class Projects extends React.Component {
     return card;
   }
   render() {
+    let cardList = this.state.cardList?this.state.cardList:"unable to connect to github";
     return (
       <div className='projects-container'>
         <div className='projects-header'>
@@ -51,7 +52,7 @@ class Projects extends React.Component {
           </h2>
         </div>
         <div className='projects-list'>
-          {this.state.cardList}
+          {cardList}
         </div>
       </div>
     )
