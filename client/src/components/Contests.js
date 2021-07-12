@@ -24,7 +24,7 @@ class Contests extends React.Component {
     }
   }
   componentDidMount() {
-    const p = 'http://localhost:8080/cf';
+    const p = 'https://localhost:8080/cf';
     axios.get(p).then((res) => {
       this.setState({
         gotInfo: true,
