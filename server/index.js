@@ -26,6 +26,10 @@ app.use((err, req, res, next) => {
   });
 });
 
+app.get('/', (req, res, next) => {
+  res.send('/cf for codeforces profile info<br/> /git-repos for git projects');
+});
+
 app.get('/cf', (req, res, next) => {
   const path1 = 'https://codeforces.com/api/user.info?handles=popsickles';
   const path2 = 'https://codeforces.com/api/user.rating?handle=popsickles';
