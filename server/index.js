@@ -1,9 +1,9 @@
 const fs = require('fs');
 const express = require('express');
+const helmet = require('helmet');
 const axios = require('axios');
 const https = require('https');
 const cors = require('cors');
-const { createPrivateKey } = require('crypto');
 require('dotenv').config();
 
 const hostname = '127.0.0.1'
@@ -14,6 +14,7 @@ const certificate = fs.readFileSync('../../../cert/localhost-cert/localhost.crt'
 const credentials = {key: privateKey, cert: certificate};
 const httpsServer = https.createServer(credentials, app);
 app.use(cors());
+app.use(helmet());
 
 app.use((err, req, res, next) => {
   console.error(err);
