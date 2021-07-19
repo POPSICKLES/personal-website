@@ -1,35 +1,31 @@
+const path = require('path');
 const fs = require('fs');
 const express = require('express');
 const helmet = require('helmet');
 const axios = require('axios');
 const https = require('https');
-const cors = require('cors');
 require('dotenv').config();
 
 const hostname = '127.0.0.1'
-const PORT = process.env.PORT || 8443;
+const PORT = process.env.PORT || 5000;
 const app = express();
-const privateKey = fs.readFileSync('../../../cert/localhost-cert/localhost.key');
-const certificate = fs.readFileSync('../../../cert/localhost-cert/localhost.crt');
+const privateKey = fs.readFileSync('../../cert/localhost-cert/localhost.key');
+const certificate = fs.readFileSync('../../cert/localhost-cert/localhost.crt');
 const credentials = {key: privateKey, cert: certificate};
 const httpsServer = https.createServer(credentials, app);
-app.use(cors());
-app.use(helmet());
+app.use(helmet.contentSecurityPolicy({
+  useDefaults: true,
+}));
+
+app.use(express.static(path.resolve(__dirname, '../client/build')));
+
 
 app.use((err, req, res, next) => {
-  console.error(err);
-  res.status(err.status).send({
-    error:{
-      status:err.status,
-      message: err.message
-    },
-  });
+  res.status(err.status || 500).send({
+    status: err.status || 500,
+    error: err.message || 'Internal Server Error'
+  })
 });
-
-app.get('/', (req, res, next) => {
-  res.send('/cf for codeforces profile info<br/> /git-repos for git projects');
-});
-
 app.get('/cf', (req, res, next) => {
   const path1 = 'https://codeforces.com/api/user.info?handles=popsickles';
   const path2 = 'https://codeforces.com/api/user.rating?handle=popsickles';
@@ -68,9 +64,10 @@ app.get('/git-repos', (req, res, next) => {
   })
 });
 
-//app.listen(PORT, hostname, () => {
-//  console.log(`Server listening on ${PORT}`);
-//});
+app.get('/*', (req, res, next) =>{
+  res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+});
+
 httpsServer.listen(PORT, hostname, ()=>{
-  console.log(`Server listenin on ${PORT}`)
+  console.log(`Server listening on ${PORT}`)
 });

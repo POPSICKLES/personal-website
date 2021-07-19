@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'react-bootstrap/Image'
 import '../css/Home.css'
 
 class Home extends React.Component {
@@ -7,9 +6,9 @@ class Home extends React.Component {
     return (
       <div className='home-container'>
         <div className='home-banner'>
-          <Image
-            src='https://media-exp1.licdn.com/dms/image/C4D03AQH6vamIy_CfoQ/profile-displayphoto-shrink_200_200/0/1583332097061?e=1631145600&v=beta&t=Ebdthp2fWFp68Fm3Gx08gkS7lhMPLIdpQ1aStg77YI4'
-            roundedCircle
+          <img
+            src='/images/me.jpg'
+            alt="Avatar"
             className='me' />
           <hr />
           <div className='home-banner-text'>
