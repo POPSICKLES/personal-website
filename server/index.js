@@ -34,7 +34,7 @@ app.use((err, req, res, next) => {
     error: err.message || 'Internal Server Error'
   })
 });
-app.get('/cf', (req, res, next) => {
+app.get('/api/cf', (req, res, next) => {
   const path1 = 'https://codeforces.com/api/user.info?handles=popsickles';
   const path2 = 'https://codeforces.com/api/user.rating?handle=popsickles';
   const path3 = 'https://codeforces.com/api/user.status?handle=popsickles&from=1&count=20';
@@ -53,7 +53,7 @@ app.get('/cf', (req, res, next) => {
     })
 });
 
-app.get('/git-repos', (req, res, next) => {
+app.get('/api/git-repos', (req, res, next) => {
   const path = 'https://api.github.com/user/repos';
   const options = {
     method: 'GET',

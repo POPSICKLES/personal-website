@@ -11,10 +11,9 @@ class Projects extends React.Component {
     }
   }
   componentDidMount() {
-    const path = 'https://localhost:5000/git-repos';
     const options = {
       method: 'GET',
-      url: path,
+      url: '/api/git-repos',
       headers: {
         'Content-Type': 'application/json',
       },

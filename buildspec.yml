@@ -1,0 +1,15 @@
+version: 0.2
+phases:
+  pre_build:
+    commands:
+      - cd client && npm install && cd ..
+      - npm install
+    build:
+      commands:
+        -cd client && npm run build && cd ..
+artifacts:
+  secondary-artifacts:
+    client:
+      files:
+        - '**/*'
+      base-directory: client/build
