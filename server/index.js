@@ -6,13 +6,21 @@ const axios = require('axios');
 const https = require('https');
 require('dotenv').config();
 
-const hostname = '127.0.0.1'
+//const hostname = '127.0.0.1'
 const PORT = process.env.PORT || 5000;
 const app = express();
-const privateKey = fs.readFileSync('../../cert/localhost-cert/localhost.key');
-const certificate = fs.readFileSync('../../cert/localhost-cert/localhost.crt');
-const credentials = {key: privateKey, cert: certificate};
-const httpsServer = https.createServer(credentials, app);
+var privateKey = null;
+var certificate = null;
+try {
+  privateKey = fs.readFileSync('../../cert/localhost-cert/localhost.key');
+  certificate = fs.readFileSync('../../cert/localhost-cert/localhost.crt');
+} catch(err) {
+  privateKey = null;
+  certificate = null;
+}
+var httpsServer = null;
+if(privateKey !== null)
+  httpsServer = https.createServer({key: privateKey, cert: certificate }, app);
 app.use(helmet.contentSecurityPolicy({
   useDefaults: true,
 }));
@@ -68,6 +76,13 @@ app.get('/*', (req, res, next) =>{
   res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 });
 
-httpsServer.listen(PORT, hostname, ()=>{
-  console.log(`Server listening on ${PORT}`)
-});
+if(httpsServer !== null){
+  httpsServer.listen(PORT, ()=>{
+    console.log(`Server listening on ${PORT}`);
+  });
+}
+else{
+  app.listen(PORT, ()=>{
+    console.log(`Server listening on ${PORT}`);
+  })
+}

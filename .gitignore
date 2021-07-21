@@ -9,6 +9,8 @@ client/.pnp
 client/.pnp.js
 client/.env
 server/.env
+.ebextensions/
+.platform/
 
 # testing
 client/coverage
