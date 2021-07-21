@@ -7,9 +7,3 @@ phases:
     build:
       commands:
         -cd client && npm run build && cd ..
-artifacts:
-  secondary-artifacts:
-    client:
-      files:
-        - '**/*'
-      base-directory: client/build
