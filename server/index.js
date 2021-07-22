@@ -25,7 +25,7 @@ app.use(helmet.contentSecurityPolicy({
   useDefaults: true,
 }));
 
-app.use(express.static(path.resolve(__dirname, 'client/build')));
+app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 
 app.use((err, req, res, next) => {
@@ -73,7 +73,7 @@ app.get('/api/git-repos', (req, res, next) => {
 });
 
 app.get('/*', (req, res, next) =>{
-  res.sendFile(path.resolve(__dirname, 'client/build', 'index.html'));
+  res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 });
 
 if(httpsServer !== null){
