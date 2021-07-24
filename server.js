@@ -3,11 +3,11 @@ const fs = require('fs');
 const express = require('express');
 const helmet = require('helmet');
 const axios = require('axios');
-const https = require('https');
+//const https = require('https');
 require('dotenv').config();
 
 //const hostname = '127.0.0.1'
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8080;
 const app = express();
 var privateKey = null;
 var certificate = null;
@@ -19,10 +19,17 @@ try {
   certificate = null;
 }
 var httpsServer = null;
-if(privateKey !== null)
+if(privateKey !== null )
   httpsServer = https.createServer({key: privateKey, cert: certificate }, app);
 app.use(helmet.contentSecurityPolicy({
-  useDefaults: true,
+  useDefaults: false,
+  directives: {
+    "default-src": ["'self'"], 
+    "base-uri": ["'self'"],
+    "script-src": ["'self'"], 
+    "object-src": ["'none'"],
+    "require-trusted-types-for": ["'script'"],
+  }
 }));
 
 app.use(express.static(path.resolve(__dirname, './client/build')));

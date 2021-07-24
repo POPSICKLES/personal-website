@@ -1,17 +1,19 @@
 {
   "name": "personal-website-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "app.js",
   "scripts": {
     "start": "node server.js",
-    "build": "cd client && npm install && npm run build",
+    "build": "babel server.js --out-file server.compiled.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.14.8",
     "axios": "^0.21.1",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
@@ -20,5 +22,14 @@
     "helmet": "^4.6.0",
     "nodemon": "^2.0.8",
     "path": "^0.12.7"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/POPSICKLES/personal-website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/POPSICKLES/personal-website/issues"
+  },
+  "homepage": "https://github.com/POPSICKLES/personal-website#readme"
 }
